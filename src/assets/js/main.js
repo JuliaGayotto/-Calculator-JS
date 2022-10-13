@@ -1,69 +1,39 @@
-function createCalculator () {
-    return {
-        display: document.querySelector('.display'),
+function Calculator () {
+    this.display = document.querySelector('.display');
 
-        start() {
-            this.buttonClicks();
-            
-        },
+    this.start = () => this.buttonClicks();
 
-        doMath() {
-            let count = this.display.value;
+    this.buttonClicks = () => {
+        document.addEventListener('click', e => {
+            const el = e.target; 
 
-            try{
-                count = eval(count);
+            if(el.classList.contains('btn-display')) this.btnToDisplay(el.innerText);
+            if(el.classList.contains('btn-clear')) this.clear();
+            if(el.classList.contains('btn-del')) this.deleteOne();
+            if(el.classList.contains('btn-eq')) this.doMath();
+        })
+    };
 
-                if (!count) {
-                    this.display.value = 'ERROR';
-                    return;
-                }
+    this.doMath = () => {
+        try{
+            const count = eval(this.display.value);
 
-                this.display.value = count;
-            } catch (e) {
+            if (!count) {
                 this.display.value = 'ERROR'
                 return;
             }
-        },
 
-        clearDisplay() {
-            this.display.value = '';
-        },
-
-        deleteOne () {
-            this.display.value = this.display.value.slice(0, -1);
-        },
-
-        buttonClicks() {
-            document.addEventListener('click', e => {
-                const el = e.target; 
-
-                if(el.classList.contains('btn-display')) {                    
-                    this.btnToDisplay(el.innerText);
-                }
-
-                if(el.classList.contains('btn-clear')) {
-                    this.clearDisplay();
-                }
-
-                if(el.classList.contains('btn-del')) {
-                    this.deleteOne();
-                }
-
-                if(el.classList.contains('btn-eq')) {
-                    this.doMath();
-                }
-
-            });
-        },
-
-        btnToDisplay(valor) {
-            this.display.value += valor
-        }
-
+            this.display.value = count;
+        } catch (e) {
+            this.display.value = 'ERROR'
+            return;
+        } 
     };
+
+    this.btnToDisplay= valor => this.display.value += valor;
+    this.clear = () => this.display.value = '';
+    this.deleteOne = () => this.display.value = this.display.value.slice(0, -1);
 };
 
-const calculator = createCalculator();
+const calculator = new Calculator();
 calculator.start();
-
-
