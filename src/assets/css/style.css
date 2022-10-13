@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap');
+:root {
+  --primary-color: rgba(0, 0, 0, 0.849);
+}
+
+* {
+  box-sizing: border-box;
+  outline: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--primary-color);
+  font-family: 'Open sans', sans-serif;
+  font-size: 1.3em;
+  line-height: 1.5em;
+}
+
+.container {
+  max-width: 640px;
+  margin: auto;
+  margin-top: 6vh;
+  background:  rgba(255, 255, 255, 0.348);
+  padding: 20px;
+  border-radius: 15px;
+  border: 2px solid gray;
+}
+
+.calculator {
+  width: 600px;
+  margin: auto;
+}
+
+.display {
+  font-size: 2em;
+  width: 100%;
+  text-align: right;
+  height: 80px;
+  margin-bottom: 5%;
+  border: none;
+  border-radius: 4px;
+  background-color: #fff;
+  color: black;
+}
+
+.btn {
+  border:1px solid gray;
+  width: 50%;
+  height: 65px;
+  font-size: 1em;
+  margin: 10%;
+  margin-left: 22%;
+  border-radius: 100%;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.929);
+}
+
+.btn:hover {
+  background-color: rgba(255, 255, 255, 0.733);
+}
+
+.btn-clear, .btn-par {
+  background-color: rgb(135,135,135);
+  border:1px solid rgba(114, 114, 114, 0.974);
+}
+
+.btn-clear:hover, .btn-par:hover {
+  background-color: rgba(135, 135, 135, 0.709);
+}
+
+.btn-operator, .btn-eq {
+  background-color: rgb(250, 168, 26);
+}
+
+.btn-operator:hover, .btn-eq:hover {
+  background-color:rgb(240, 155, 6);
+}
